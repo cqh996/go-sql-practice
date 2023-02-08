@@ -1,4 +1,4 @@
-# Go_SQLite3
+# go-sql_practice
 
 # starter code 
 ./starter/main.go
