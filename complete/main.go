@@ -16,7 +16,9 @@ const createTable string = `CREATE TABLE courses(
 
 const insertTuple string = `insert into courses (department, code, description) VALUES (?,?,?);`
 
-const getCseCourses string = `select department, code, description from courses `
+const getCseCourses string = `select department, code, description 
+							  from courses where department = ? 
+							  order by code;`
 
 func main() {
 	// create .db file
@@ -45,7 +47,7 @@ func main() {
 	statement.Exec("ece", 260, "VLSI")
 
 	// retrieve all cse courses tuples in ascending order by code.
-	rows, err := database.Query(getCseCourses)
+	rows, err := database.Query(getCseCourses, "cse")
 	if err != nil {
 		fmt.Println(err.Error())
 	}

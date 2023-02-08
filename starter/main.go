@@ -1,10 +1,6 @@
 package main
 
 import (
-	"database/sql"
-	"fmt"
-	"strconv"
-
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -16,7 +12,9 @@ const createTable string = `CREATE TABLE courses(
 
 const insertTuple string = `insert into courses (department, code, description) VALUES (?,?,?);`
 
-const getCseCourses string = `select department, code, description from courses `
+const getCseCourses string = `select department, code, description 
+							  from courses where department = ? 
+							  order by code;`
 
 func main() {
 	// create .db file
